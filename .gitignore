@@ -1,0 +1,12 @@
+.metadata/
+*.bin
+*.elf
+*.list
+makefile
+*.map
+*.mk
+*.d
+*.o
+*.su
+RemoteSystemsTempFiles/
+
