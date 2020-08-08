@@ -9,4 +9,6 @@ makefile
 *.o
 *.su
 RemoteSystemsTempFiles/
+.DS_Store
+
 
