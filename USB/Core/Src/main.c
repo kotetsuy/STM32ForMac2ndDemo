@@ -103,28 +103,18 @@ int main(void)
     /* USER CODE BEGIN 3 */
 	  memset(buf, 0, 8);
 	  if (Pushed == 1) {
-		    // Push button
-	      #if 0
-		    buf[2] = 0x1d; // z
-		    USBD_HID_SendReport(&hUsbDeviceFS, buf, 8);
-		    Pushed = 0;
-	      HAL_Delay(100);
-		    // Release button
-		    buf[2] = 0;
-		    USBD_HID_SendReport(&hUsbDeviceFS, buf, 8);
-	      #else
-		    buf[0] = 5; //Left Ctrl+Alt
-		    buf[2] = 0x2c; // Spacebar
-		    buf[3] = 0xe0; // Left Ctrl
-		    USBD_HID_SendReport(&hUsbDeviceFS, buf, 8);
-		    Pushed = 0;
-	      HAL_Delay(100);
-		    // Release button
-		    buf[0] = 0;
-		    buf[2] = 0;
-		    buf[3] = 0;
-		    USBD_HID_SendReport(&hUsbDeviceFS, buf, 8);
-	      #endif
+	    // Push button
+	    buf[0] = 1; //Left Ctrl
+	    buf[2] = 0x2c; // Spacebar
+	    buf[3] = 0xe0; // Left Ctrl
+	    USBD_HID_SendReport(&hUsbDeviceFS, buf, 8);
+	    Pushed = 0;
+      HAL_Delay(100);
+	    // Release button
+	    buf[0] = 0;
+	    buf[2] = 0;
+	    buf[3] = 0;
+	    USBD_HID_SendReport(&hUsbDeviceFS, buf, 8);
 	  }
   }
   /* USER CODE END 3 */
