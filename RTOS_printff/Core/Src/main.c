@@ -318,12 +318,13 @@ void StartDefaultTask(void const * argument)
 void UARTStartTask(void const * argument)
 {
   /* USER CODE BEGIN UARTStartTask */
-	static uint16_t cnt = 0;
+	static float cnt = 0.0f;
   /* Infinite loop */
   for(;;)
   {
 	  osSignalWait(SIGNAL_UART, osWaitForever);
-	  sprintf((char*)UARTBuf, "%d\n", cnt++);
+	  sprintf((char*)UARTBuf, "%f\n", cnt);
+	  cnt += 1.0f;
 	  HAL_UART_Transmit(&huart2, UARTBuf, strlen((const char *)UARTBuf), 1000);
   }
   /* USER CODE END UARTStartTask */
