@@ -152,7 +152,7 @@ int32_t Ymodem_Receive (uint8_t *buf)
   {
     for (packets_received = 0, file_done = 0, buf_ptr = buf; ;)
     {
-      switch (Receive_Packet(packet_data, &packet_length, NAK_TIMEOUT))
+      switch (Receive_Packet(packet_data, &packet_length, 1000))
       {
         case 0:
           errors = 0;
@@ -203,7 +203,7 @@ int32_t Ymodem_Receive (uint8_t *buf)
                       return -1;
                     }
                     /* erase user application area */
-                    FLASH_If_Erase(APPADDR);
+//                    FLASH_If_Erase(APPADDR); // move to main()
                     Send_Byte(ACK);
                     Send_Byte(CRC16);
                   }
